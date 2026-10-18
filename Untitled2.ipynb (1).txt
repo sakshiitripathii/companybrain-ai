@@ -1,0 +1,734 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "toc_visible": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "KXETTkXIN6xX",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "fc12ed5d-44b7-4ddb-ce94-12fec1c7e5e2"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Neha added\n"
+          ]
+        }
+      ],
+      "source": [
+        "graph.query(\"MERGE (p:Person {name:'Neha', role:'UI Designer'})\"); print(\"Neha added\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "!pip install -q falkordblite==0.10.0"
+      ],
+      "metadata": {
+        "id": "fZp0hgROOD8f"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "graph.query(\"MERGE (s:Skill {name:'Python'})\"); print(\"Python skill added\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "KaWCAyxzivlF",
+        "outputId": "51ee6fee-728f-4063-b24d-a2355a6edb05"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Python skill added\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "graph.query(\"MERGE (s:Skill {name:'Management'})\"); print(\"Management skill added\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "MNbOOd5fjRI5",
+        "outputId": "35c6dedc-3c86-48d6-a0a9-8f57d6dd6fc7"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Management skill added\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "graph.query(\"MERGE (p:Person {name:'Sakshi', role:'Data Analyst'})\"); print(\"Sakshi added\")"
+      ],
+      "metadata": {
+        "id": "-KbIsDT1gIL4",
+        "outputId": "00b0c2ee-6ee0-4ecb-a5e0-40c0a19f2731",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Sakshi added\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "graph.query(\"MERGE (s:Skill {name:'Figma'})\"); print(\"Figma skill added\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "Lk4QKRQnjlkt",
+        "outputId": "4b98a190-eaa0-4f00-ca23-030bcfd71985"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Figma skill added\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "graph.query(\"MATCH (p:Person {name:'Sakshi'}),(s:Skill {name:'Python'}) MERGE (p)-[:HAS_SKILL]->(s)\"); print(\"Sakshi → Python\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "rNJFTBqXj5DR",
+        "outputId": "02a90d82-b9ce-43c5-f28a-154e90731331"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Sakshi → Python\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "graph.query(\"MERGE (p:Person {name:'Sushil', role:'Software Engineer'})\"); print(\"Sushil added\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "ZBst1sYugmzv",
+        "outputId": "0ae4565b-6045-4ab3-c602-6d411f4cf887"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Sushil added\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "graph.query(\"MATCH (p:Person {name:'Sushil'}),(s:Skill {name:'Python'}) MERGE (p)-[:HAS_SKILL]->(s)\"); print(\"Sushil → Python\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "EGzRiH44nH6O",
+        "outputId": "afab3934-cf0c-45a6-bfec-0a71c9ea19ea"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Sushil → Python\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "graph.query(\"MATCH (p:Person {name:'Priya'}),(s:Skill {name:'Python'}) MERGE (p)-[:HAS_SKILL]->(s)\"); print(\"Priya → Python\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "Lfbq_jqxnPLj",
+        "outputId": "34b426a0-c8e4-4bf8-9552-0536e4be4b46"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Priya → Python\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "graph.query(\"MATCH (p:Person {name:'Aman'}),(s:Skill {name:'Management'}) MERGE (p)-[:HAS_SKILL]->(s)\"); print(\"Aman → Management\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "qmf7PD2GnWDw",
+        "outputId": "fbbd61b2-4076-4423-969d-29bf67ec27e6"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Aman → Management\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "graph.query(\"MATCH (p:Person {name:'Neha'}),(s:Skill {name:'Figma'}) MERGE (p)-[:HAS_SKILL]->(s)\"); print(\"Neha → Figma\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "EFMjgYPaniRT",
+        "outputId": "d4c267b9-d660-46c5-9013-6df318464f46"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Neha → Figma\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "graph.query(\"MERGE (p:Project {name:'Sales Dashboard'})\"); print(\"Sales Dashboard added\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "Gzx_mwUQn952",
+        "outputId": "0ffd5578-c42b-40af-f125-ddcdabf1cdbd"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Sales Dashboard added\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "graph.query(\"MERGE (p:Project {name:'AI Platform'})\"); print(\"AI Platform added\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "ItvoOmxYoC9-",
+        "outputId": "af0a9544-5b4b-42b7-bf81-bc0781a5f6a7"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "AI Platform added\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "graph.query(\"MERGE (p:Project {name:'Recommendation Engine'})\"); print(\"Recommendation Engine added\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "SQsSCugFoMMU",
+        "outputId": "a7fc4f20-6bf3-40d1-d897-b11b3060eb66"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Recommendation Engine added\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "graph.query(\"MERGE (p:Project {name:'AI Platform'})\"); print(\"AI Platform added\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "xawPnrIvoWj-",
+        "outputId": "d6bae02d-e796-4f34-d9b0-fb5d210a6ade"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "AI Platform added\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "graph.query(\"MERGE (p:Project {name:'Recommendation Engine'})\"); print(\"Recommendation Engine added\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "Vaaj8guUqGJa",
+        "outputId": "37a18c18-a0ad-4764-a99e-07cb1220196f"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Recommendation Engine added\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "graph.query(\"MATCH (p:Person {name:'Sushil'}),(pr:Project {name:'AI Platform'}) MERGE (p)-[:WORKED_ON]->(pr)\"); print(\"Sushil → AI Platform\")"
+      ],
+      "metadata": {
+        "id": "Oz7W9HPyqMV-",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "76fe0130-ee6f-4ca3-cdd9-7e2d8c997995"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Sushil → AI Platform\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "graph.query(\"MATCH (p:Person {name:'Priya'}),(pr:Project {name:'Recommendation Engine'}) MERGE (p)-[:WORKED_ON]->(pr)\"); print(\"Priya → Recommendation Engine\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "zGljCPswrF_a",
+        "outputId": "5f3fe2c3-6da5-4e0a-ac62-c0099a4cb99e"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Priya → Recommendation Engine\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "graph.query(\"MATCH (p:Person {name:'Aman'}),(pr:Project {name:'Sales Dashboard'}) MERGE (p)-[:WORKED_ON]->(pr)\"); print(\"Aman → Sales Dashboard\")"
+      ],
+      "metadata": {
+        "id": "aDvt7Jf2rLH-"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "graph.query(\"MATCH (p:Person {name:'Sakshi'}),(pr:Project {name:'Sales Dashboard'}) MERGE (p)-[:WORKED_ON]->(pr)\"); print(\"Sakshi → Sales Dashboard\")"
+      ],
+      "metadata": {
+        "id": "qhZn22kZqdIL",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "beec44e0-41ae-4b21-a0ce-6de81bea184a"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Sakshi → Sales Dashboard\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "graph.query(\"MATCH (p:Person {name:'Aman'}),(pr:Project {name:'Sales Dashboard'}) MERGE (p)-[:WORKED_ON]->(pr)\"); print(\"Aman → Sales Dashboard\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "E5k_DwHOq7wb",
+        "outputId": "1656a5c6-b2a8-4c53-f431-bb795150aa62"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Aman → Sales Dashboard\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "graph.query(\"MATCH (p:Person {name:'Neha'}),(pr:Project {name:'AI Platform'}) MERGE (p)-[:WORKED_ON]->(pr)\"); print(\"Neha → AI Platform\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "hm93Wapfrp2E",
+        "outputId": "931aef7f-9840-4fcf-bfe8-7d9c7e594d96"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Neha → AI Platform\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "graph.query(\"MATCH (p:Person {name:'Sakshi'}),(pr:Project {name:'Sales Dashboard'}) MERGE (p)-[:WORKED_ON]->(pr)\")\n",
+        "graph.query(\"MATCH (p:Person {name:'Sushil'}),(pr:Project {name:'AI Platform'}) MERGE (p)-[:WORKED_ON]->(pr)\")\n",
+        "graph.query(\"MATCH (p:Person {name:'Priya'}),(pr:Project {name:'Recommendation Engine'}) MERGE (p)-[:WORKED_ON]->(pr)\")\n",
+        "graph.query(\"MATCH (p:Person {name:'Aman'}),(pr:Project {name:'Sales Dashboard'}) MERGE (p)-[:WORKED_ON]->(pr)\")\n",
+        "graph.query(\"MATCH (p:Person {name:'Neha'}),(pr:Project {name:'AI Platform'}) MERGE (p)-[:WORKED_ON]->(pr)\")\n",
+        "print(\"✅ All project relationships created!\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "HkGbTIUWr29k",
+        "outputId": "321d802f-2208-4da1-91fa-b154915cb60d"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "✅ All project relationships created!\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "result = graph.query(\"MATCH (p:Person)-[:HAS_SKILL]->(s:Skill {name:'Python'}), (p)-[:WORKED_ON]->(pr:Project {name:'Sales Dashboard'}) RETURN p.name AS employee, p.role AS role\")\n",
+        "\n",
+        "print(\"QUESTION: Who knows Python and worked on the Sales Dashboard?\")\n",
+        "print(\"\\nANSWER:\")\n",
+        "for row in result.result_set:\n",
+        "    print(\"•\", row[0], \"-\", row[1])"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "p_TzfUTHsbqO",
+        "outputId": "a25a601e-1da5-46df-c727-c9cc53759a1a"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "QUESTION: Who knows Python and worked on the Sales Dashboard?\n",
+            "\n",
+            "ANSWER:\n",
+            "• Sakshi - Data Analyst\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [],
+      "metadata": {
+        "id": "TraPrEkE1Rkp"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [],
+      "metadata": {
+        "id": "r1hDF1O11Sbh"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [],
+      "metadata": {
+        "id": "SWp1jg181Xpu"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "result=graph.query(\"MATCH (p:Person)-[:HAS_SKILL]->(s:Skill),(p)-[:WORKED_ON]->(pr:Project) RETURN p.name AS Employee,p.role AS Role,s.name AS Skill,pr.name AS Project ORDER BY p.name\"); print(result.result_set)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 0
+        },
+        "id": "50v5Vzpb1fjI",
+        "outputId": "8ca18215-d6fc-4b2c-8799-c5921e397248"
+      },
+      "execution_count": 50,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[['Aman', 'Project Manager', 'Management', 'Sales Dashboard'], ['Neha', 'UI Designer', 'Figma', 'AI Platform'], ['Priya', 'Data Scientist', 'Python', 'Recommendation Engine'], ['Sakshi', 'Data Analyst', 'Python', 'Sales Dashboard'], ['Sushil', 'Software Engineer', 'Python', 'AI Platform']]\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "graph.query(\"MERGE (p:Project {name:'Recommendation Engine'})\"); print(\"Recommendation Engine added\")"
+      ],
+      "metadata": {
+        "id": "C_5pmLCMolai"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "graph.query(\"MERGE (p:Person {name:'Priya', role:'Data Scientist'})\"); print(\"Priya added\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "r_gt7WjxgxQc",
+        "outputId": "bb6f6d3a-d113-461e-8757-6c0e6c8ee993"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Priya added\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "graph.query(\"MERGE (p:Person {name:'Aman', role:'Project Manager'})\"); print(\"Aman added\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "dRZhihSzg2lo",
+        "outputId": "096f5261-b959-4667-bc98-8f15fb2c3fac"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Aman added\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "from redislite.falkordb_client import FalkorDB\n",
+        "\n",
+        "db = FalkorDB(\"/tmp/companybrain.db\")\n",
+        "graph = db.select_graph(\"companybrain\")\n",
+        "\n",
+        "print(\"✅ FalkorDB READY\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "h1mAHbUPOVj7",
+        "outputId": "32c237e4-a7b0-4a40-8391-86374bf853a3"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "✅ FalkorDB READY\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "print(\"TEST OK\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "Z-y4isGnfo5n",
+        "outputId": "bc9b760b-d59c-470b-b504-0bba3f11ba13"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "TEST OK\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
